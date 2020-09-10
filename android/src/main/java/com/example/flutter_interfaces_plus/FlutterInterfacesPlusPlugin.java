@@ -8,6 +8,7 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
+import com.example.flutter_interfaces_plus.GetInterfaces;
 
 /** FlutterInterfacesPlusPlugin */
 public class FlutterInterfacesPlusPlugin implements FlutterPlugin, MethodCallHandler {
@@ -27,7 +28,11 @@ public class FlutterInterfacesPlusPlugin implements FlutterPlugin, MethodCallHan
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
     if (call.method.equals("getPlatformVersion")) {
       result.success("Android " + android.os.Build.VERSION.RELEASE);
-    } else {
+    }
+    if (call.method.equals("getPlatformInterfaces")) {
+      result.success(GetInterfaces.getInterfaceList());
+    }
+    else {
       result.notImplemented();
     }
   }
