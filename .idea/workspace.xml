@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07f66ddf-9123-4307-8ff8-f50da479e68d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/ZhangHuifeng.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/inetAddress.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/inetAddressGroup.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit_test/ip_match_test.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit_test/ip_translate_test.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit_test/network_interface_test.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/com/example/flutter_interfaces_plus/FlutterInterfacesPlusPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/example/flutter_interfaces_plus/FlutterInterfacesPlusPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/example/flutter_interfaces_plus/GetInterfaces.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/example/flutter_interfaces_plus/GetInterfaces.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/example/flutter_interfaces_plus/FlutterInterfacesPlusPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/example/flutter_interfaces_plus/FlutterInterfacesPlusPlugin.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/flutter_interfaces_plus.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_interfaces_plus.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/interfaces.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/myInterfaces.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/inetInterfaces.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,10 +27,20 @@
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="62RBB19920101383" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1hJgUDcWszKeLLeSpk0x30vuRFv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -31,7 +51,13 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Dart" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\Flutter\flutter_interfaces_plus\test" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -46,34 +72,45 @@
     </task>
     <servers />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="690" y="306" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600067046824">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="690" y="306" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.40.1920.1040@0.40.1920.1040" timestamp="1600067046824" />
     <state x="815" y="325" key="AndroidProcessChooserDialog" timestamp="1599735712094">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="815" y="325" key="AndroidProcessChooserDialog/0.40.1920.1040@0.40.1920.1040" timestamp="1599735712094" />
-    <state width="1860" height="310" key="GridCell.Tab.0.bottom" timestamp="1599739215713">
+    <state width="1877" height="337" key="GridCell.Tab.0.bottom" timestamp="1600081699997">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1860" height="310" key="GridCell.Tab.0.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1599739215713" />
-    <state width="1860" height="310" key="GridCell.Tab.0.center" timestamp="1599739215712">
+    <state width="1877" height="337" key="GridCell.Tab.0.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1600081699997" />
+    <state width="1877" height="337" key="GridCell.Tab.0.center" timestamp="1600081699997">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1860" height="310" key="GridCell.Tab.0.center/0.40.1920.1040@0.40.1920.1040" timestamp="1599739215712" />
-    <state width="1860" height="310" key="GridCell.Tab.0.left" timestamp="1599739215712">
+    <state width="1877" height="337" key="GridCell.Tab.0.center/0.40.1920.1040@0.40.1920.1040" timestamp="1600081699997" />
+    <state width="1877" height="337" key="GridCell.Tab.0.left" timestamp="1600081699997">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1860" height="310" key="GridCell.Tab.0.left/0.40.1920.1040@0.40.1920.1040" timestamp="1599739215712" />
-    <state width="1860" height="310" key="GridCell.Tab.0.right" timestamp="1599739215713">
+    <state width="1877" height="337" key="GridCell.Tab.0.left/0.40.1920.1040@0.40.1920.1040" timestamp="1600081699997" />
+    <state width="1877" height="337" key="GridCell.Tab.0.right" timestamp="1600081699997">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1860" height="310" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1599739215713" />
+    <state width="1877" height="337" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1600081699997" />
+    <state x="423" y="352" width="1395" height="716" key="SettingsEditor" timestamp="1600055131996">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="423" y="352" width="1395" height="716" key="SettingsEditor/0.40.1920.1040@0.40.1920.1040" timestamp="1600055131996" />
     <state x="100" y="140" width="1720" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1599738205301">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="100" y="140" width="1720" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog/0.40.1920.1040@0.40.1920.1040" timestamp="1599738205301" />
-    <state x="623" y="265" key="search.everywhere.popup" timestamp="1599735549329">
+    <state x="623" y="265" width="672" height="678" key="search.everywhere.popup" timestamp="1600053389022">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="623" y="265" key="search.everywhere.popup/0.40.1920.1040@0.40.1920.1040" timestamp="1599735549329" />
+    <state x="623" y="265" width="672" height="678" key="search.everywhere.popup/0.40.1920.1040@0.40.1920.1040" timestamp="1600053389022" />
   </component>
 </project>

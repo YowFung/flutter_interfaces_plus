@@ -4,23 +4,28 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.net.InetAddress;
 import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.HashMap;
 
 
 public class GetInterfaces {
   @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-  public static ArrayList<HashMap<String, String>> getInterfaceList() {
-    ArrayList<HashMap<String, String>> resultList = new ArrayList<HashMap<String, String>>();
+  public static String getInterfaceList() {
+    JSONArray root = new JSONArray();
 
     try {
       Enumeration<NetworkInterface> eni = NetworkInterface.getNetworkInterfaces();
+      int cardCounter = 0;
+
       while (eni.hasMoreElements()) {
 
         NetworkInterface networkCard = eni.nextElement();
@@ -28,33 +33,42 @@ public class GetInterfaces {
           continue;
 
         String displayName = networkCard.getDisplayName();
+        int index = networkCard.getIndex();
+        boolean isVirtual = networkCard.isVirtual();
+        byte[] mac = networkCard.getHardwareAddress();
+
         List<InterfaceAddress> addressList = networkCard.getInterfaceAddresses();
         Iterator<InterfaceAddress> addressIterator = addressList.iterator();
 
+        JSONArray addresses = new JSONArray();
+        int addressCounter = 0;
+
         while (addressIterator.hasNext()) {
           InterfaceAddress interfaceAddress = addressIterator.next();
+          int prefix = interfaceAddress.getNetworkPrefixLength();
           InetAddress address = interfaceAddress.getAddress();
-          if (!address.isLoopbackAddress()) {
-            String hostAddress = address.getHostAddress();
 
-            if (hostAddress.indexOf(":") <= 0) {
-              String maskAddress = calcMaskByPrefixLength(interfaceAddress.getNetworkPrefixLength());
+          JSONObject info = new JSONObject();
+          info.put("address", address != null ? address.getHostAddress() : "null");
+          info.put("prefix", String.valueOf(prefix));
 
-              HashMap<String, String> tmpInterface = new HashMap<>();
-              tmpInterface.put("name", displayName);
-              tmpInterface.put("address", hostAddress);
-              tmpInterface.put("mask", maskAddress);
-
-              resultList.add(tmpInterface);
-            }
-          }
+          addresses.put(addressCounter++, info);
         }
+
+        JSONObject node = new JSONObject();
+        node.put("name", displayName);
+        node.put("index", index);
+        node.put("mac", mac);
+        node.put("isVirtual", isVirtual);
+        node.put("addresses", addresses);
+        root.put(cardCounter++, node);
       }
     } catch (Exception e) {
       e.printStackTrace();
     }
 
-    return resultList;
+    Log.e("JSON", root.toString());
+    return root.toString();
   }
 
   public static String calcMaskByPrefixLength(int length) {

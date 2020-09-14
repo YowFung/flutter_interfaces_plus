@@ -14,31 +14,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-  dynamic _platformInterfaces;
+  List<InetNetworkInterface> interfaces;
+  String platformVersion;
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    dynamic platformInterfaces;
-    try {
-      platformVersion = await FlutterInterfacesPlus.platformVersion;
-      platformInterfaces = await FlutterInterfacesPlus.platformInterfaces;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-      platformInterfaces = "Failed to get platform interfaces.";
-    }
-
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-      _platformInterfaces = platformInterfaces;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FlutterInterfacesPlus.platformVersion.then((value) => this.setState(() => this.platformVersion = value));
+      InetNetworkInterface.list().then((value) => this.setState(() => this.interfaces = value));
     });
   }
 
@@ -49,16 +33,18 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Flutter Interfaces Plus Demo'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Running on: $_platformVersion\n'),
-              Text('Interfaces: $_platformInterfaces\n')
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(padding: EdgeInsets.only(top: 20)),
+            Text('Running on: ${this.platformVersion ?? "Unknown"}\n', style: TextStyle(color: Colors.green)),
+            Text('Interfaces: ${this.interfaces == null ? 'Unknown' : this.interfaces.length}\n', style: TextStyle(color: Colors.green)),
+            this.interfaces == null ? Expanded() : Expanded(
+                child: SingleChildScrollView(child: Text(this.interfaces.join("\n\n\n")))
+              )
             ],
-          )
-        ),
+        )
       ),
     );
   }
