@@ -90,19 +90,15 @@ class InetNetworkInterface
     bool includeLinkLocal: false,
     InternetAddressType type: InternetAddressType.any
   }) async {
-    var message = await InetNetworkInterface._channel.invokeMethod('getPlatformInterfaces');
-    List jsonObj = json.decode(message);
-    print('+++++++++++++++++++++++++++++++');
-    print(jsonObj);
-    print('+++++++++++++++++++++++++++++++');
+    List<InetNetworkInterface> cards = [];
+    List msg = await InetNetworkInterface._channel.invokeMethod('getPlatformInterfaces');
     // try {
-      List<InetNetworkInterface> cards = [];
-      jsonObj.forEach((c) {
-        Map<String, Object> card = c;
+      msg.forEach((c) {
+        Map<String, Object> card = Map.from(c);
         String name = card['name'];
         int index = card['index'];
         bool isVirtual = card['isVirtual'];
-        Uint8List mac = Uint8List.fromList(utf8.encode(card['mac'].toString()));
+        Uint8List mac = card['mac'];
 
         List addresses = card['addresses'];
         List<InetAddressGroup> addressesGroup = [];
@@ -118,11 +114,10 @@ class InetNetworkInterface
         });
         cards.add(InetNetworkInterface._(index, name, mac, isVirtual, addressesGroup));
       });
-      return cards.toList(growable: false);
     // }
     // catch(e) {
     //   print("InetNetworkInterfaceParseError: $e");
-    //   return List.empty();
     // }
+    return cards.toList(growable: false);
   }
 }

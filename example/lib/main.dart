@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
             Padding(padding: EdgeInsets.only(top: 20)),
             Text('Running on: ${this.platformVersion ?? "Unknown"}\n', style: TextStyle(color: Colors.green)),
             Text('Interfaces: ${this.interfaces == null ? 'Unknown' : this.interfaces.length}\n', style: TextStyle(color: Colors.green)),
-            this.interfaces == null ? Expanded() : Expanded(
+            this.interfaces == null ? Text("none!") : Expanded(
                 child: SingleChildScrollView(child: Text(this.interfaces.join("\n\n\n")))
               )
             ],
