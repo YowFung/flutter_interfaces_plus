@@ -54,6 +54,8 @@ class InetAddress
 
   InetAddressType get type => this._type;
   int get bitsLength => this._type == InetAddressType.IPv4 ? 32 : 128;
+  int get hashCode => this.toString().hashCode;
+  operator == (Object other) => other is InetAddress && other.hashCode == this.hashCode;
 
   bool get isAnyLocalAddress => this._isAnyLocalAddress();
   bool get isLoopbackAddress => this._isLoopbackAddress();
@@ -91,7 +93,7 @@ class InetAddress
           break;
         }
       }
-      return addr;
+      return addr.toUpperCase();
     }
   }
 
@@ -118,7 +120,7 @@ class InetAddress
             throw "Invalid IPv6 address.";
         }
       }
-      return raw.toList(growable: false);
+      return raw.map((e) => e.toUpperCase()).toList(growable: false);
     }
   }
 

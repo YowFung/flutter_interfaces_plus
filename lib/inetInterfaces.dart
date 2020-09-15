@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'inetAddressGroup.dart' show InetAddressGroup;
 import 'inetAddress.dart' show InetAddress, InetAddressType;
+import 'utils.dart' as utils;
 
 
 class _NetworkInterface extends NetworkInterface
@@ -42,10 +43,10 @@ class InetInterface
 
   int get length => this._addressGroupList.length;
   bool get isEmpty => this._addressGroupList.isEmpty;
-
+  String get macString => this.mac == null ? "" : this.mac.map((e) => utils.toHex(e)).join('-');
   List<InetAddressGroup> get addresses => this._addressGroupList;
 
-  int get hashCode => this.index + this.name.hashCode + this._addressGroupList.length + (){
+  int get hashCode => this.index + this.name.hashCode + this.mac.hashCode + this._addressGroupList.length + (){
     var sum = 0;
     this._addressGroupList.forEach((e) => sum += e.hashCode);
     return sum;
@@ -57,11 +58,11 @@ class InetInterface
     var text = "";
     text += "\nName: ${this.name}\n";
     text += "Index: ${this.index}\n";
-    text += "Mac: ${this.mac}\n";
+    text += "Mac: ${this.macString}\n";
     text += "IsVirtual: ${this.isVirtual}\n";
-    for (var i = 0; i < this.addresses.length; i++) {
+    for (var i = 0; i < this.length; i++) {
       text += "\nAddress [$i]:\n";
-      var lines = this.addresses[i].toString().split('\n');
+      var lines = this[i].toString().split('\n');
       for(var j = 0; j < lines.length; j++)
         lines[j] = "    " + lines[j] + "\n";
       text += lines.join();

@@ -3,6 +3,8 @@
     <words>
       <w>addr</w>
       <w>inet</w>
+      <w>iostream</w>
+      <w>iphlpapi</w>
       <w>multicast</w>
     </words>
   </dictionary>

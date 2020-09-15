@@ -75,7 +75,9 @@ class _MyAppState extends State<MyApp> {
                 : Expanded(child: Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(10),
-                    child: SingleChildScrollView(child: Text(this.interfaces.join("\n\n"))),
+                    child: SingleChildScrollView(
+                      child: Text(this.interfaces.join("\n\n"))
+                    ),
                     decoration: BoxDecoration(
                       border: Border(
                         top: BorderSide(color: Colors.grey),
