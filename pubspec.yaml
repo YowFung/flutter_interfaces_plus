@@ -1,8 +1,8 @@
 name: flutter_interfaces_plus
-description: A new flutter plugin project.
+description: Enhanced Flutter network interface plug-in for multiple platforms.
 version: 0.0.1
-author:
-homepage:
+author: yowfung
+homepage: https://github.com/YowFung/flutter_interfaces_plus
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

@@ -1,11 +1,10 @@
 import 'dart:io';
-import 'dart:convert' show json, utf8;
 import 'dart:typed_data' show Uint8List;
 
 import 'package:flutter/services.dart';
 
 import 'inetAddressGroup.dart' show InetAddressGroup;
-import 'inetAddress.dart' show InetAddress;
+import 'inetAddress.dart' show InetAddress, InetAddressType;
 
 
 class _NetworkInterface extends NetworkInterface
@@ -22,9 +21,9 @@ class _NetworkInterface extends NetworkInterface
 }
 
 
-class InetNetworkInterface
+class InetInterface
 {
-  InetNetworkInterface._(
+  InetInterface._(
       this.index,
       this.name,
       this.mac,
@@ -55,20 +54,18 @@ class InetNetworkInterface
   void forEach(void Function(InetAddressGroup address) f) => this._addressGroupList.forEach(f);
 
   String toString() {
-    var text = "."*100;
+    var text = "";
     text += "\nName: ${this.name}\n";
     text += "Index: ${this.index}\n";
     text += "Mac: ${this.mac}\n";
     text += "IsVirtual: ${this.isVirtual}\n";
     for (var i = 0; i < this.addresses.length; i++) {
       text += "\nAddress [$i]:\n";
-      text += "    Address: \t${this.addresses[i].ip}\n";
-      text += "    Type: \t${this.addresses[i].type}\n";
-      text += "    Prefix: \t${this.addresses[i].prefixLength}\n";
-      text += "    Mask: \t${this.addresses[i].mask}\n";
-      text += "    Broadcast: \t${this.addresses[i].broadcast}\n";
+      var lines = this.addresses[i].toString().split('\n');
+      for(var j = 0; j < lines.length; j++)
+        lines[j] = "    " + lines[j] + "\n";
+      text += lines.join();
     }
-    text += "."*100;
     return text;
   }
 
@@ -81,18 +78,19 @@ class InetNetworkInterface
   }
 
   InetAddressGroup operator [] (int index) => this._addressGroupList[index];
-  bool operator == (Object other) => other is InetNetworkInterface && other.hashCode == this.hashCode;
+  bool operator == (Object other) => other is InetInterface && other.hashCode == this.hashCode;
 
   static const MethodChannel _channel = const MethodChannel('flutter_interfaces_plus');
 
-  static Future<List<InetNetworkInterface>> list({
+  static Future<List<InetInterface>> list({
     bool includeLoopback: false,
     bool includeLinkLocal: false,
-    InternetAddressType type: InternetAddressType.any
+    bool includeIPv4: true,
+    bool includeIPv6: true
   }) async {
-    List<InetNetworkInterface> cards = [];
-    List msg = await InetNetworkInterface._channel.invokeMethod('getPlatformInterfaces');
-    // try {
+    List<InetInterface> cards = [];
+    List msg = await InetInterface._channel.invokeMethod('getPlatformInterfaces');
+    try {
       msg.forEach((c) {
         Map<String, Object> card = Map.from(c);
         String name = card['name'];
@@ -103,21 +101,28 @@ class InetNetworkInterface
         List addresses = card['addresses'];
         List<InetAddressGroup> addressesGroup = [];
         addresses.forEach((addr) {
-          String ip = addr['address'];
-          var i = ip.indexOf('%');
+          String ipStr = addr['address'];
+          var i = ipStr.indexOf('%');
           if (i != -1)
-            ip = ip.substring(0, i);
-          addressesGroup.add(InetAddressGroup.withPrefixLength(
-              ip: InetAddress(ip),
-              prefixLength: int.parse(addr['prefix']))
-          );
+            ipStr = ipStr.substring(0, i);
+          var ip = InetAddress(ipStr);
+          if (!(ip.isLinkLocalAddress && !includeLinkLocal
+              || ip.isLoopbackAddress && !includeLoopback
+              || ip.type == InetAddressType.IPv4 && !includeIPv4
+              || ip.type == InetAddressType.IPv6 && !includeIPv6)
+          ) {
+            int prefix = int.parse(addr['prefix']);
+            var group = InetAddressGroup.withPrefixLength(ip: ip, prefixLength: prefix);
+            addressesGroup.add(group);
+          }
         });
-        cards.add(InetNetworkInterface._(index, name, mac, isVirtual, addressesGroup));
+        if (addressesGroup.isNotEmpty)
+          cards.add(InetInterface._(index, name, mac, isVirtual, addressesGroup));
       });
-    // }
-    // catch(e) {
-    //   print("InetNetworkInterfaceParseError: $e");
-    // }
+    }
+    catch(e) {
+      print("InetNetworkInterfaceParseError: $e");
+    }
     return cards.toList(growable: false);
   }
 }

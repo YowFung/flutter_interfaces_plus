@@ -1,4 +1,4 @@
-import 'dart:typed_data';
+import 'dart:typed_data' show Uint8List;
 
 import 'package:flutter/foundation.dart' show required;
 import 'inetAddress.dart' show InetAddress, InetAddressType;
@@ -83,4 +83,14 @@ class InetAddressGroup
 
   @override
   bool operator == (Object other) => other is InetAddressGroup && other.hashCode == this.hashCode;
+
+  String toString() {
+    var text = "";
+    text += "Address: \t${this.ip}\n";
+    text += "Type: \t${this.type}\n";
+    text += "Prefix: \t${this.prefixLength}\n";
+    text += "Mask: \t${this.mask}\n";
+    text += "Broadcast: \t${this.broadcast}\n";
+    return text;
+  }
 }
