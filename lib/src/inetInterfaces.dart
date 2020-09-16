@@ -113,7 +113,7 @@ class InetInterface
               || ip.type == InetAddressType.IPv6 && !includeIPv6)
           ) {
             int prefix = int.parse(addr['prefix']);
-            var group = InetAddressGroup.withPrefixLength(ip: ip, prefixLength: prefix);
+            var group = InetAddressGroup.byPrefixLength(ip: ip, prefixLength: prefix);
             addressesGroup.add(group);
           }
         });

@@ -50,7 +50,7 @@ class InetAddressGroup
     return length;
   }
 
-  InetAddressGroup.withMask({
+  InetAddressGroup.byMask({
     @required this.ip,
     @required InetAddress mask
   }) : assert(ip != null && mask != null && mask.isMask && ip.type == mask.type) {
@@ -59,7 +59,7 @@ class InetAddressGroup
     this._broadcast = InetAddressGroup.calcBroadcastAddressByMask(this.ip, mask);
   }
 
-  InetAddressGroup.withPrefixLength({
+  InetAddressGroup.byPrefixLength({
     @required this.ip,
     @required int prefixLength
   }) : assert(ip != null && prefixLength > 0 && prefixLength <= ip.bitsLength) {
