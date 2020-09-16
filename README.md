@@ -60,7 +60,7 @@ InetInterface.list(
   includeLinkLocal: true,
   includeIPv4: true,
   includeIPv6: true
-).then((interfaces) {									// interfaces is List<InetInterface>
+).then((interfaces) {                // interfaces is List<InetInterface>
   interfaces.forEach((interface) {
     // Print network card information:
     print(interface.name);
@@ -71,7 +71,7 @@ InetInterface.list(
     print(interface.isVirtual);
     
     // Print information of each address of this interface:
-    interface.forEach((address) {			// Equal to [interface.addresses.forEach(...)]
+    interface.forEach((address) {    // Equal to [interface.addresses.forEach(...)]
       print(address.ip);
       print(address.type);
       print(address.mask);
@@ -80,7 +80,7 @@ InetInterface.list(
     });
     
     // Print information of specified address:
-    var address = interface[0];				// Equal to [interface.addresses[0]]
+    var address = interface[0];       // Equal to [interface.addresses[0]]
     print(address.toString());
     
     // Or you can use the [toString] method to print all informations about this interface:
@@ -135,11 +135,11 @@ InetAddressGroup group = InetAddressGroup.byPrefixLength(ip: ip, prefixLength: p
 /** Instance properties **/
 int index;
 String name;
-Uint8List mac;			// eg. [228, 253, 161, 71, 158, 121]
-String macString;		// eg. "E4-FD-A1-47-9E-79"
-bool isVirtual;			// Determine if it's a virtual network card.
-bool isEmpty;				// Has no address(es).
-int length;					// count of addresses.
+Uint8List mac;      // eg. [228, 253, 161, 71, 158, 121]
+String macString;   // eg. "E4-FD-A1-47-9E-79"
+bool isVirtual;     // Determine if it's a virtual network card.
+bool isEmpty;       // Has no address(es).
+int length;         // count of addresses.
 List<InetAddressGroup> addresses;
 
 
@@ -173,8 +173,8 @@ static Future<List<InetInterface>> list({
 
 ```dart
 /** Instance properties **/
-InetAddressType type;				// IPv4 or IPv6
-int bitsLength;							// 32 if IPv4 else 128
+InetAddressType type;       // IPv4 or IPv6
+int bitsLength;             // 32 if IPv4 else 128
 bool isAnyLocalAddress;
 bool isLoopbackAddress;
 bool isLinkLocalAddress;
@@ -191,16 +191,16 @@ bool isMask;
 // Convert to [InternetAddress] of DART library.
 InternetAddress toInternetAddress();
 
-// Concise form. 	eg. "192.168.1.1" or "::1"
+// Concise form.  eg. "192.168.1.1" or "::1"
 String toString();
 
-// raw int.		 		eg. [192, 168, 1, 1]
+// raw int.       eg. [192, 168, 1, 1]
 List<int> toRawInt();
 
-// raw string.	 	eg. ["192", "168", "1", "1"] or ["FE80", "0", ..., "FD1"]
+// raw string.    eg. ["192", "168", "1", "1"] or ["FE80", "0", ..., "FD1"]
 List<String> toRawString();
 
-// Tidy form.			eg. ["192", "168", "001", "001"] or ["FE80", "0000", ..., "0FD1"]
+// Tidy form.     eg. ["192", "168", "001", "001"] or ["FE80", "0000", ..., "0FD1"]
 List<String> toRawStringTidy();
 
 
@@ -215,14 +215,14 @@ static bool isContains(InetAddress target, InetAddress floor, InetAddress ceilin
 
 ```dart
 /** Instance properties **/
-InetAddress ip;					// IP address
-InetAddress mask;				// subnet mask
-InetAddress broadcast;	// broadcast address
-InetAddressType type;		// IPv4 or IPv6
+InetAddress ip;         // IP address
+InetAddress mask;       // subnet mask
+InetAddress broadcast;  // broadcast address
+InetAddressType type;   // IPv4 or IPv6
 int prefixLength;
 
 /** Instace methods **/
-String toString();			// Formatted output information
+String toString();      // Formatted output information
 
 /** Static methods **/
 static InetAddress InetAddressGroup.calcBroadcastAddressByMask(InetAddress ip, InetAddress mask);
