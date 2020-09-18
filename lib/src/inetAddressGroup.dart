@@ -79,7 +79,7 @@ class InetAddressGroup
   InetAddress get broadcast => this._broadcast;
 
   @override
-  int get hashCode => this.ip.hashCode + this._mask.hashCode + this._broadcast.hashCode;
+  int get hashCode => this.toString().hashCode;
 
   @override
   bool operator == (Object other) => other is InetAddressGroup && other.hashCode == this.hashCode;

@@ -59,7 +59,8 @@ InetInterface.list(
   includeLoopback: true,
   includeLinkLocal: true,
   includeIPv4: true,
-  includeIPv6: true
+  includeIPv6: true,
+  onError: (errMsg) => print("Has exception(s) when list network interfaces: $errMsg")
 ).then((interfaces) {                // interfaces is List<InetInterface>
   interfaces.forEach((interface) {
     // Print network card information:

@@ -1,3 +1,14 @@
+## 0.0.3
+
+* Added callback options for enumerating network card that has errors.
+* Fixed bugs on object comparisons.
+
+
+## 0.0.2
+
+* Fixed some bugs.
+
+
 ## 0.0.1
 
 * Support for Android platform.

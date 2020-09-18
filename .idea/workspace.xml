@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07f66ddf-9123-4307-8ff8-f50da479e68d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,10 +88,10 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state width="1877" height="262" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1600167630653" />
-    <state x="423" y="352" width="1395" height="716" key="SettingsEditor" timestamp="1600055131996">
+    <state x="211" y="201" width="1101" height="716" key="SettingsEditor" timestamp="1600240895654">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="423" y="352" width="1395" height="716" key="SettingsEditor/0.40.1920.1040@0.40.1920.1040" timestamp="1600055131996" />
+    <state x="211" y="201" width="1101" height="716" key="SettingsEditor/0.40.1920.1040@0.40.1920.1040" timestamp="1600240895654" />
     <state x="100" y="140" width="1720" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1599738205301">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>

@@ -46,11 +46,10 @@ class InetInterface
   String get macString => this.mac == null ? "" : this.mac.map((e) => utils.toHex(e)).join('-');
   List<InetAddressGroup> get addresses => this._addressGroupList;
 
-  int get hashCode => this.index + this.name.hashCode + this.mac.hashCode + this._addressGroupList.length + (){
-    var sum = 0;
-    this._addressGroupList.forEach((e) => sum += e.hashCode);
-    return sum;
-  }();
+  InetAddressGroup operator [] (int index) => this._addressGroupList[index];
+  bool operator == (Object other) => other is InetInterface && other.hashCode == this.hashCode;
+
+  int get hashCode => this.toString().hashCode;
 
   void forEach(void Function(InetAddressGroup address) f) => this._addressGroupList.forEach(f);
 
@@ -78,16 +77,14 @@ class InetInterface
     );
   }
 
-  InetAddressGroup operator [] (int index) => this._addressGroupList[index];
-  bool operator == (Object other) => other is InetInterface && other.hashCode == this.hashCode;
-
   static const MethodChannel _channel = const MethodChannel('flutter_interfaces_plus');
 
   static Future<List<InetInterface>> list({
     bool includeLoopback: false,
     bool includeLinkLocal: false,
     bool includeIPv4: true,
-    bool includeIPv6: true
+    bool includeIPv6: true,
+    void Function(dynamic errMsg) onError
   }) async {
     List<InetInterface> cards = [];
     List msg = await InetInterface._channel.invokeMethod('getPlatformInterfaces');
@@ -122,7 +119,8 @@ class InetInterface
       });
     }
     catch(e) {
-      print("InetNetworkInterfaceParseError: $e");
+      if (onError != null)
+        onError(e);
     }
     return cards.toList(growable: false);
   }
