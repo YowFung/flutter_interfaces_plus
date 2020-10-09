@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:convert' show json, Utf8Encoder;
 import 'dart:typed_data' show Uint8List;
 
 import 'package:flutter/services.dart';
@@ -43,7 +44,7 @@ class InetInterface
 
   int get length => this._addressGroupList.length;
   bool get isEmpty => this._addressGroupList.isEmpty;
-  String get macString => this.mac == null ? "" : this.mac.map((e) => utils.toHex(e)).join('-');
+  String get macString => this.mac == null ? "" : this.mac.map((e) => utils.toHex(e, 2)).join('-');
   List<InetAddressGroup> get addresses => this._addressGroupList;
 
   InetAddressGroup operator [] (int index) => this._addressGroupList[index];
@@ -87,21 +88,27 @@ class InetInterface
     void Function(dynamic errMsg) onError
   }) async {
     List<InetInterface> cards = [];
-    List msg = await InetInterface._channel.invokeMethod('getPlatformInterfaces');
+    String msg = await InetInterface._channel.invokeMethod('getPlatformInterfaces');
+    // print(msg);
+
     try {
-      msg.forEach((c) {
+      List data = json.decode(msg);
+
+      data.forEach((c) { 
         Map<String, Object> card = Map.from(c);
+
         String name = card['name'];
         int index = card['index'];
         bool isVirtual = card['isVirtual'];
-        Uint8List mac = card['mac'];
-
+        List macArr = card['mac'];
+        Uint8List mac = Uint8List.fromList(macArr.map((e) => e as int).toList());
         List addresses = card['addresses'];
+
         List<InetAddressGroup> addressesGroup = [];
-        addresses.forEach((addr) {
+        addresses.forEach((addr) { 
           String ipStr = addr['address'];
           var i = ipStr.indexOf('%');
-          if (i != -1)
+          if (i != -1) 
             ipStr = ipStr.substring(0, i);
           var ip = InetAddress(ipStr);
           if (!(ip.isLinkLocalAddress && !includeLinkLocal
@@ -109,7 +116,7 @@ class InetInterface
               || ip.type == InetAddressType.IPv4 && !includeIPv4
               || ip.type == InetAddressType.IPv6 && !includeIPv6)
           ) {
-            int prefix = int.parse(addr['prefix']);
+            int prefix = addr['prefix'];
             var group = InetAddressGroup.byPrefixLength(ip: ip, prefixLength: prefix);
             addressesGroup.add(group);
           }
@@ -118,10 +125,11 @@ class InetInterface
           cards.add(InetInterface._(index, name, mac, isVirtual, addressesGroup));
       });
     }
+
     catch(e) {
-      if (onError != null)
-        onError(e);
+      throw e;
     }
+
     return cards.toList(growable: false);
   }
 }

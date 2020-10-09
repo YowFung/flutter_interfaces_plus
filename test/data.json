@@ -1,0 +1,45 @@
+[
+    {
+        "name": "dummy0", 
+        "index": 2, 
+        "isVirtual": false, 
+        "mac": [158, 173, 14, 85, 69, 164],
+        "addresses": [
+            {
+                "address": "fe80::9cad:eff:fe55:45a4%dummy0", 
+                "prefix": 64
+            }
+        ]
+    }, 
+    {
+        "name": "lo", 
+        "index": 1, 
+        "isVirtual": false, 
+        "mac": null,
+        "addresses": [
+            {
+                "address": "::1", 
+                "prefix": 128
+            }, {
+                "address": "127.0.0.1", 
+                "prefix": 8
+            }
+        ]
+    }, 
+    {
+        "name": "wlan0", 
+        "index": 28, 
+        "isVirtual": false, 
+        "mac": [228, 253, 161, 71, 158, 121],
+        "addresses": [
+            {
+                "address": "fe80::7661:4412:908c:d318%wlan0", 
+                "prefix": 64
+            }, 
+            {
+                "address": "192.168.87.234", 
+                "prefix": 24
+            }
+        ]
+    }
+]

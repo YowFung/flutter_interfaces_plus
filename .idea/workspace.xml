@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07f66ddf-9123-4307-8ff8-f50da479e68d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/example/flutter_interfaces_plus/GetInterfaces.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/example/flutter_interfaces_plus/GetInterfaces.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/lib/src/inetInterfaces.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/lib/src/inetInterfaces.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/lib/src/utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/linux/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/lib/src/utils.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/lib/src/inetInterfaces.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/lib/src/inetInterfaces.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/lib/src/utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_interfaces_plus/lib/src/utils.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/inetInterfaces.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/inetInterfaces.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +42,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
